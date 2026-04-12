@@ -14,7 +14,7 @@
         
         body { font-family: 'Inter', sans-serif; background: #08080c; color: #e2e8f0; overflow-x: hidden; margin: 0; }
         
-        /* Sticky Navigation */
+        /* Navigation */
         nav { background: rgba(8, 8, 12, 0.98); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1); }
         .nav-link { 
             font-size: 0.8rem; 
@@ -29,14 +29,14 @@
         }
         .nav-link:hover { background: #a855f7; }
 
-        /* Hero Zoom Animation */
+        /* Hero Animation */
         @keyframes slowZoom { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
         .bg-animate { animation: slowZoom 25s infinite ease-in-out; transform-origin: center 15%; }
         
         .animate-on-scroll { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
         .animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
 
-        /* Image & Video Grid Styling */
+        /* Grid Item Styling */
         .img-card { 
             width: 100%; 
             min-height: 280px; 
@@ -50,7 +50,7 @@
         #video-grid { display: grid; grid-template-cols: 1fr; gap: 20px; min-height: 400px; }
         @media (min-width: 768px) { #video-grid { grid-template-cols: repeat(3, 1fr); } }
 
-        /* Share Buttons Grid */
+        /* Share Grid */
         .share-grid { display: grid; grid-template-cols: repeat(2, 1fr); gap: 12px; max-width: 500px; margin: 0 auto; }
         @media (min-width: 640px) { .share-grid { grid-template-cols: repeat(4, 1fr); } }
         
