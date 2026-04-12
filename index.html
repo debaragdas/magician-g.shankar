@@ -14,7 +14,7 @@
         
         body { font-family: 'Inter', sans-serif; background: #08080c; color: #e2e8f0; overflow-x: hidden; margin: 0; }
         
-        /* Navigation - Increased tap targets for mobile */
+        /* Sticky Navigation */
         nav { background: rgba(8, 8, 12, 0.98); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1); }
         .nav-link { 
             font-size: 0.8rem; 
@@ -29,14 +29,14 @@
         }
         .nav-link:hover { background: #a855f7; }
 
-        /* Hero Animation */
+        /* Hero Zoom Animation */
         @keyframes slowZoom { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
         .bg-animate { animation: slowZoom 25s infinite ease-in-out; transform-origin: center 15%; }
         
         .animate-on-scroll { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
         .animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
 
-        /* Grid Item Safety Heights */
+        /* Image & Video Grid Styling */
         .img-card { 
             width: 100%; 
             min-height: 280px; 
@@ -47,9 +47,19 @@
             border: 1px solid rgba(255,255,255,0.05);
         }
 
-        /* Video Area Height */
         #video-grid { display: grid; grid-template-cols: 1fr; gap: 20px; min-height: 400px; }
         @media (min-width: 768px) { #video-grid { grid-template-cols: repeat(3, 1fr); } }
+
+        /* Share Buttons Grid */
+        .share-grid { display: grid; grid-template-cols: repeat(2, 1fr); gap: 12px; max-width: 500px; margin: 0 auto; }
+        @media (min-width: 640px) { .share-grid { grid-template-cols: repeat(4, 1fr); } }
+        
+        .btn-share { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 15px; border-radius: 16px; transition: 0.3s; font-size: 0.7rem; font-weight: 700; color: white; text-transform: uppercase; }
+        .btn-share i { margin-bottom: 8px; width: 20px; height: 20px; }
+        .bg-whatsapp { background-color: #25D366; }
+        .bg-facebook { background-color: #1877F2; }
+        .bg-twitter { background-color: #1DA1F2; }
+        .bg-instagram { background: linear-gradient(45deg, #f09433 0%, #dc2743 50%, #bc1888 100%); }
 
         #image-modal.active { display: flex; }
     </style>
@@ -85,7 +95,7 @@
             <div class="bg-white/5 backdrop-blur-xl p-8 md:p-12 rounded-[2.5rem] border border-white/10">
                 <h2 class="text-2xl md:text-3xl font-bold mb-6 text-white uppercase tracking-widest border-b-2 border-purple-500 pb-2 w-fit">The Mind Behind The Magic</h2>
                 <p class="text-gray-300 text-base md:text-lg leading-relaxed">
-                    Gouri Shankar Das is a seasoned <strong>Hypno-Mentalist</strong> with over 12 years of performance experience. His work focuses on high-impact psychological wonder and the extraordinary capabilities of the mind.
+                    Gouri Shankar Das is a seasoned <strong>Hypno-Mentalist</strong> with over 12 years of performance experience. His work focuses on high-impact psychological wonder and the extraordinary capabilities of the human mind.
                 </p>
             </div>
         </div>
@@ -96,8 +106,7 @@
             <h2 class="text-3xl font-bold text-white uppercase tracking-[0.3em]">Performance Reels</h2>
             <div class="h-1 w-20 bg-purple-600 mx-auto mt-4"></div>
         </div>
-        <div id="video-grid">
-            </div>
+        <div id="video-grid"></div>
     </section>
 
     <section id="persona-gallery" class="py-16 px-4 max-w-6xl mx-auto animate-on-scroll">
@@ -111,13 +120,20 @@
     </section>
 
     <footer id="contact" class="py-24 px-4 bg-black/95 text-center border-t border-white/5">
-        <div class="mb-12 space-y-4">
-            <h3 class="text-gray-500 uppercase tracking-widest text-xs mb-2">Bookings & Management</h3>
+        <div class="mb-14 space-y-4">
+            <h3 class="text-gray-500 uppercase tracking-widest text-xs mb-2">Bookings & Inquiries</h3>
             <a href="tel:+918011939996" class="text-2xl md:text-3xl text-purple-400 font-bold block">+91 80119-39996</a>
             <a href="mailto:mentalistshankar22@gmail.com" class="text-base md:text-lg text-purple-400 block">mentalistshankar22@gmail.com</a>
         </div>
+
+        <div class="share-grid mb-16">
+            <button onclick="shareNow('whatsapp')" class="btn-share bg-whatsapp"><i data-lucide="message-circle"></i> WhatsApp</button>
+            <button onclick="shareNow('facebook')" class="btn-share bg-facebook"><i data-lucide="facebook"></i> Facebook</button>
+            <button onclick="shareNow('twitter')" class="btn-share bg-twitter"><i data-lucide="twitter"></i> Twitter</button>
+            <a href="https://www.instagram.com/mentalist_g.shankar" target="_blank" class="btn-share bg-instagram"><i data-lucide="instagram"></i> Instagram</a>
+        </div>
         
-        <p class="text-gray-800 text-[10px] tracking-[0.6em] uppercase mt-20">© 2026 GOURI SHANKAR DAS</p>
+        <p class="text-gray-800 text-[10px] tracking-[0.6em] uppercase">© 2026 GOURI SHANKAR DAS</p>
     </footer>
 
     <div id="image-modal" class="fixed inset-0 z-[200] bg-black/98 hidden items-center justify-center p-4">
@@ -127,5 +143,16 @@
 
     <script src="script.js"></script>
     <script async src="//www.instagram.com/embed.js"></script>
+    <script>
+        function shareNow(platform) {
+            const url = window.location.href;
+            const text = "Discover the magic of Gouri Shankar Das: ";
+            let link = "";
+            if(platform === 'whatsapp') link = `https://api.whatsapp.com/send?text=${encodeURIComponent(text + url)}`;
+            else if(platform === 'facebook') link = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+            else if(platform === 'twitter') link = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+            window.open(link, '_blank');
+        }
+    </script>
 </body>
 </html>
