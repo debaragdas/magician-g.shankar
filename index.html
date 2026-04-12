@@ -22,16 +22,15 @@
             overflow-x: hidden;
         }
 
-        /* Fixed Background Movement - Focusing on the top/face */
+        /* Fixed Background Movement - Balanced Positioning */
         @keyframes slowZoom {
             0% { transform: scale(1); }
-            50% { transform: scale(1.08); }
+            50% { transform: scale(1.1); }
             100% { transform: scale(1); }
         }
         .bg-animate {
-            animation: slowZoom 20s infinite ease-in-out;
-            /* This ensures the zoom happens relative to the top/center */
-            transform-origin: top center; 
+            animation: slowZoom 25s infinite ease-in-out;
+            transform-origin: center 20%; 
         }
 
         .glass-card { 
@@ -50,6 +49,10 @@
             transform: translateY(0); 
         }
 
+        .social-btn {
+            @apply p-3 bg-white/5 rounded-full hover:bg-purple-600 transition-all duration-300 flex items-center justify-center;
+        }
+
         #image-modal.active { display: flex; }
     </style>
 </head>
@@ -57,8 +60,8 @@
 
     <section class="relative h-screen flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <img src="images/background.png" alt="Background" class="w-full h-full object-cover object-top opacity-50 bg-animate">
-            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/60 to-[#08080c]"></div>
+            <img src="images/background.png" alt="Background" class="w-full h-full object-cover opacity-50 bg-animate" style="object-position: center 15%;">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/70 to-[#08080c]"></div>
         </div>
         <div class="relative z-10 text-center px-4">
             <h1 class="text-6xl md:text-8xl font-bold mb-4 tracking-tighter uppercase text-white drop-shadow-2xl">GAURI SHANKAR DAS</h1>
@@ -74,39 +77,43 @@
             <div class="glass-card p-8 rounded-3xl text-gray-300 leading-relaxed">
                 <h2 class="text-3xl font-bold mb-6 text-white border-b-2 border-purple-500 w-fit pb-2">About The Artist</h2>
                 <p class="mb-4 text-lg">Magician G. Shankar is a seasoned <strong>Hypno-Mentalist and Psychological Illusionist</strong> with over 12 years of experience performing on stage. His work focuses on creating astonishing moments by harnessing the power of the human mind.</p>
-                <p class="text-lg text-purple-200 italic">"Enter his world, where perception shifts and the mind becomes the ultimate stage."</p>
+                <p class="text-lg text-purple-200 italic">"The mind is the ultimate stage."</p>
             </div>
         </div>
     </section>
 
     <section id="work" class="py-24 px-4 max-w-6xl mx-auto animate-on-scroll">
-        <h2 class="text-3xl font-bold mb-12 text-center text-white">Latest Performances</h2>
-        <div id="video-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            </div>
+        <h2 class="text-3xl font-bold mb-12 text-center text-white">Performances</h2>
+        <div id="video-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
     </section>
 
     <section id="gallery" class="py-24 px-4 max-w-6xl mx-auto animate-on-scroll">
-        <h2 class="text-3xl font-bold mb-12 text-center text-white">Photo Gallery</h2>
-        <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            </div>
+        <h2 class="text-3xl font-bold mb-12 text-center text-white">Gallery</h2>
+        <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
     </section>
 
-    <footer class="py-24 px-4 bg-black/60 border-t border-white/5 text-center">
-        <h2 class="text-3xl font-bold mb-8 text-white tracking-widest uppercase">Contact & Bookings</h2>
-        <div class="flex flex-col items-center gap-6 mb-12">
-            <a href="tel:+918011939996" class="text-2xl md:text-3xl text-purple-400 font-bold tracking-widest flex items-center gap-3 hover:scale-105 transition-transform">
-                <i data-lucide="phone"></i> +91 80119-39996
-            </a>
-            <div class="flex gap-6">
-                <button onclick="shareSite()" class="p-4 bg-white/5 rounded-full hover:bg-purple-600 transition-all cursor-pointer">
-                    <i data-lucide="share-2"></i>
-                </button>
-                <a href="https://www.instagram.com/" target="_blank" class="p-4 bg-white/5 rounded-full hover:bg-purple-600 transition-all">
-                    <i data-lucide="instagram"></i>
+    <footer class="py-24 px-4 bg-black/80 border-t border-white/5 text-center">
+        <h2 class="text-3xl font-bold mb-12 text-white tracking-widest uppercase">Get In Touch</h2>
+        
+        <div class="flex flex-col items-center gap-8 mb-16">
+            <div class="space-y-4">
+                <a href="tel:+918011939996" class="text-xl md:text-2xl text-purple-400 font-bold tracking-widest flex items-center justify-center gap-3 hover:text-white transition-colors">
+                    <i data-lucide="phone" class="w-6 h-6"></i> +91 80119-39996
+                </a>
+                <a href="mailto:mentalistshankar22@gmail.com" class="text-xl md:text-2xl text-purple-400 font-bold tracking-widest flex items-center justify-center gap-3 hover:text-white transition-colors">
+                    <i data-lucide="mail" class="w-6 h-6"></i> mentalistshankar22@gmail.com
                 </a>
             </div>
+
+            <div class="flex flex-wrap justify-center gap-4 mt-4">
+                <button onclick="shareLink('whatsapp')" class="social-btn hover:bg-green-600" title="Share on WhatsApp"><i data-lucide="message-circle"></i></button>
+                <button onclick="shareLink('facebook')" class="social-btn hover:bg-blue-700" title="Share on Facebook"><i data-lucide="facebook"></i></button>
+                <button onclick="shareLink('twitter')" class="social-btn hover:bg-sky-500" title="Share on Twitter/X"><i data-lucide="twitter"></i></button>
+                <button onclick="navigator.share({url: window.location.href})" class="social-btn hover:bg-purple-600" title="Other Share Options"><i data-lucide="share-2"></i></button>
+            </div>
         </div>
-        <p class="text-gray-600 text-sm tracking-widest">© 2026 GAURI SHANKAR DAS | PRODUCED BY DEBAWAVES</p>
+        
+        <p class="text-gray-600 text-xs tracking-[0.3em] uppercase">© 2026 GAURI SHANKAR DAS | DEBAWAVES PRODUCTION</p>
     </footer>
 
     <div id="image-modal" class="fixed inset-0 z-[100] bg-black/95 hidden items-center justify-center p-4">
@@ -114,7 +121,23 @@
         <img id="modal-img" src="" class="max-w-full max-h-[85vh] rounded-lg shadow-2xl">
     </div>
 
+    <script>
+        function shareLink(platform) {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent("Check out the official website of Gauri Shankar Das - Hypno-Mentalist!");
+            
+            const links = {
+                whatsapp: `https://api.whatsapp.com/send?text=${text}%20${url}`,
+                facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
+                twitter: `https://twitter.com/intent/tweet?text=${text}&url=${url}`
+            };
+            
+            window.open(links[platform], '_blank');
+        }
+
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
     <script src="script.js"></script>
-    <script async src="//www.instagram.com/embed.js"></script>
 </body>
 </html>
