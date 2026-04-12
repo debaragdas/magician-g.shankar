@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     // =========================
-    // 1. LOAD IMAGE GALLERY
+    // 1. LOAD GALLERY
     // =========================
     fetch('gallery-data.json')
     .then(res => res.json())
@@ -36,13 +36,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
     })
-    .catch(() => {
-        console.error("Gallery failed");
-    });
+    .catch(() => console.error("Gallery failed"));
 
 
     // =========================
-    // 2. LOAD INSTAGRAM REELS
+    // 2. LOAD INSTAGRAM REELS (FINAL FIX)
     // =========================
     const videoGrid = document.getElementById('video-grid');
 
@@ -55,23 +53,22 @@ document.addEventListener("DOMContentLoaded", () => {
         videoGrid.innerHTML = '';
 
         data.reels.forEach(reel => {
-            const div = document.createElement('div');
+            const wrapper = document.createElement('div');
+            wrapper.className = "w-full flex justify-center";
 
-            div.className = "w-full min-h-[420px] flex justify-center";
-
-            div.innerHTML = `
+            wrapper.innerHTML = `
                 <blockquote class="instagram-media"
                     data-instgrm-permalink="${reel.url}"
                     data-instgrm-version="14"
-                    style="width:100%; margin:0;">
+                    style="width:100%; max-width:540px; margin:0;">
                 </blockquote>
             `;
 
-            videoGrid.appendChild(div);
+            videoGrid.appendChild(wrapper);
         });
 
-        // 🔥 CRITICAL: process embeds safely
-        processInstagramEmbeds();
+        // 🔥 IMPORTANT: process after slight delay
+        setTimeout(runInstagram, 800);
 
     })
     .catch(() => {
@@ -102,11 +99,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // =========================
-// 🔥 INSTAGRAM EMBED ENGINE (FINAL FIX)
+// 🔥 INSTAGRAM ENGINE (FINAL)
 // =========================
-function processInstagramEmbeds() {
+function runInstagram() {
 
-    let attempts = 0;
+    let tries = 0;
 
     const interval = setInterval(() => {
 
@@ -115,11 +112,23 @@ function processInstagramEmbeds() {
             clearInterval(interval);
         }
 
-        attempts++;
-        if (attempts > 20) {
+        tries++;
+        if (tries > 25) {
             clearInterval(interval);
             console.warn("Instagram embed failed after retries");
         }
 
     }, 500);
 }
+
+
+// =========================
+// 🔥 EXTRA: AUTO REPROCESS IF DOM CHANGES
+// =========================
+const observer = new MutationObserver(() => {
+    if (window.instgrm && window.instgrm.Embeds) {
+        window.instgrm.Embeds.process();
+    }
+});
+
+observer.observe(document.body, { childList: true, subtree: true });
