@@ -1,7 +1,10 @@
 {
-  "instagramReels": [
-    { "shortcode": "DBYx1SBy7zG", "title": "Mind Reading" },
-    { "shortcode": "DA-xSBy7zG", "title": "Hypnosis Reel" },
-    { "shortcode": "C_sxSBy7zG", "title": "Stage Show" }
+  "reels": [
+    { "url": "https://www.instagram.com/reel/DTPkLSIj_-7/" },
+    { "url": "https://www.instagram.com/reel/DUdcPwCD7sV/" },
+    { "url": "https://www.instagram.com/reel/DU2XIiQD9DX/" },
+    { "url": "https://www.instagram.com/reel/DV_M990Dy2Y/" },
+    { "url": "https://www.instagram.com/reel/DWEPz38D6J2/" },
+    { "url": "https://www.instagram.com/reel/DWoX6xOjwGl/" }
   ]
 }
