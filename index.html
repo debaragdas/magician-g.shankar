@@ -22,7 +22,7 @@
             overflow-x: hidden;
         }
 
-        /* Hero Background Animation - Fixed for Face Visibility */
+        /* Hero Background Animation */
         @keyframes slowZoom {
             0% { transform: scale(1); }
             50% { transform: scale(1.1); }
@@ -49,7 +49,7 @@
             transform: translateY(0); 
         }
 
-        /* Social Share Button Grid */
+        /* Social Share Buttons */
         .share-grid {
             display: grid;
             grid-template-cols: repeat(2, 1fr);
@@ -73,15 +73,12 @@
             font-weight: 700;
             color: white;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
         .btn-share i { margin-bottom: 8px; width: 20px; height: 20px; }
-        .btn-share:hover { transform: translateY(-5px); filter: brightness(1.1); }
-
         .bg-whatsapp { background-color: #25D366; }
         .bg-facebook { background-color: #1877F2; }
         .bg-twitter { background-color: #1DA1F2; }
-        .bg-instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+        .bg-instagram { background: linear-gradient(45deg, #f09433 0%, #dc2743 50%, #bc1888 100%); }
 
         #image-modal.active { display: flex; }
     </style>
@@ -94,8 +91,21 @@
             <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/80 to-[#08080c]"></div>
         </div>
         <div class="relative z-10 text-center px-4">
-            <h1 class="text-6xl md:text-8xl font-bold mb-4 tracking-tighter uppercase text-white drop-shadow-2xl">GAURI SHANKAR DAS</h1>
-            <p class="text-xl md:text-2xl text-purple-400 font-light tracking-[0.2em] drop-shadow-lg">HYPNO-MENTALIST • ILLUSIONIST</p>
+            <h1 class="text-6xl md:text-8xl font-bold mb-4 tracking-tighter uppercase text-white">GAURI SHANKAR DAS</h1>
+            <p class="text-xl md:text-2xl text-purple-400 font-light tracking-[0.2em]">HYPNO-MENTALIST • ILLUSIONIST</p>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 px-4 max-w-5xl mx-auto animate-on-scroll">
+        <div class="flex flex-col md:flex-row items-center gap-12">
+            <div class="w-64 h-64 md:w-80 md:h-80 flex-shrink-0">
+                <img src="images/profile.png" alt="Gauri Shankar Das" class="w-full h-full object-cover rounded-2xl shadow-2xl border-2 border-purple-500/20">
+            </div>
+            <div class="glass-card p-8 rounded-3xl text-gray-300 leading-relaxed">
+                <h2 class="text-3xl font-bold mb-6 text-white border-b-2 border-purple-500 w-fit pb-2 uppercase tracking-widest">The Mind Behind The Magic</h2>
+                <p class="mb-4 text-lg">Gauri Shankar Das is a seasoned <strong>Hypno-Mentalist and Psychological Illusionist</strong> with over 12 years of professional experience. His performances bypass traditional props, focusing instead on the extraordinary capabilities of the human mind.</p>
+                <p class="text-lg text-purple-200">Step into a world where perception is challenged and reality becomes a canvas for wonder.</p>
+            </div>
         </div>
     </section>
 
@@ -104,8 +114,7 @@
             <h2 class="text-3xl font-bold text-white uppercase tracking-[0.3em]">The Artist's Persona</h2>
             <div class="h-1 w-20 bg-purple-600 mx-auto mt-4"></div>
         </div>
-        <div id="persona-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            </div>
+        <div id="persona-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
     </section>
 
     <section id="public-gallery" class="py-20 px-4 max-w-6xl mx-auto animate-on-scroll">
@@ -113,48 +122,37 @@
             <h2 class="text-3xl font-bold text-white uppercase tracking-[0.3em]">Public Appearance</h2>
             <p class="text-gray-500 mt-2 italic font-light">Captured moments from live stage and events</p>
         </div>
-        <div id="public-grid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
-            </div>
+        <div id="public-grid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3"></div>
     </section>
 
     <footer class="py-24 px-4 bg-black/90 border-t border-white/5 text-center">
-        <h2 class="text-2xl font-bold mb-10 text-white tracking-widest uppercase">Contact & Bookings</h2>
-        
-        <div class="space-y-6 mb-16">
-            <a href="tel:+918011939996" class="text-xl md:text-2xl text-purple-400 font-bold block hover:text-white transition-colors tracking-widest">
-                +91 80119-39996
-            </a>
-            <a href="mailto:mentalistshankar22@gmail.com" class="text-lg text-purple-400 block hover:text-white transition-colors">
-                mentalistshankar22@gmail.com
-            </a>
+        <div class="mb-12 space-y-4">
+            <a href="tel:+918011939996" class="text-2xl text-purple-400 font-bold block hover:text-white transition-colors tracking-widest">+91 80119-39996</a>
+            <a href="mailto:mentalistshankar22@gmail.com" class="text-lg text-purple-400 block hover:text-white transition-colors">mentalistshankar22@gmail.com</a>
         </div>
-
-        <h3 class="text-xs text-gray-600 mb-6 uppercase tracking-[0.3em]">Share The Magic</h3>
-        <div class="share-grid">
-            <button onclick="shareAction('whatsapp')" class="btn-share bg-whatsapp"><i data-lucide="message-circle"></i> WhatsApp</button>
-            <button onclick="shareAction('facebook')" class="btn-share bg-facebook"><i data-lucide="facebook"></i> Facebook</button>
-            <button onclick="shareAction('twitter')" class="btn-share bg-twitter"><i data-lucide="twitter"></i> Twitter</button>
+        <div class="share-grid mb-12">
+            <button onclick="shareNow('whatsapp')" class="btn-share bg-whatsapp"><i data-lucide="message-circle"></i> WhatsApp</button>
+            <button onclick="shareNow('facebook')" class="btn-share bg-facebook"><i data-lucide="facebook"></i> Facebook</button>
+            <button onclick="shareNow('twitter')" class="btn-share bg-twitter"><i data-lucide="twitter"></i> Twitter</button>
             <a href="https://www.instagram.com/mentalist_g.shankar" target="_blank" class="btn-share bg-instagram"><i data-lucide="instagram"></i> Instagram</a>
         </div>
-        
-        <p class="mt-20 text-gray-800 text-[10px] tracking-[0.5em] uppercase">© 2026 GAURI SHANKAR DAS | DEBAWAVES</p>
+        <p class="text-gray-800 text-[10px] tracking-[0.5em] uppercase">© 2026 GAURI SHANKAR DAS | DEBAWAVES</p>
     </footer>
 
-    <div id="image-modal" class="fixed inset-0 z-[100] bg-black/95 hidden items-center justify-center p-4 transition-all duration-300">
+    <div id="image-modal" class="fixed inset-0 z-[100] bg-black/95 hidden items-center justify-center p-4">
         <button id="close-modal" class="absolute top-5 right-5 text-white/50 hover:text-white"><i data-lucide="x" class="w-10 h-10"></i></button>
-        <img id="modal-img" src="" class="max-w-full max-h-[85vh] rounded-lg shadow-2xl">
+        <img id="modal-img" src="" class="max-w-full max-h-[85vh] rounded-lg">
     </div>
 
     <script src="script.js"></script>
     <script>
-        function shareAction(platform) {
-            const url = window.location.href;
-            const text = "Check out Gauri Shankar Das - Hypno-Mentalist: ";
-            let link = "";
-            if(platform === 'whatsapp') link = `https://api.whatsapp.com/send?text=${encodeURIComponent(text + url)}`;
-            else if(platform === 'facebook') link = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
-            else if(platform === 'twitter') link = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
-            window.open(link, '_blank');
+        function shareNow(p) {
+            const u = window.location.href; const m = "Gauri Shankar Das - Hypno-Mentalist Website: ";
+            let s = "";
+            if(p==='whatsapp') s=`https://api.whatsapp.com/send?text=${encodeURIComponent(m+u)}`;
+            else if(p==='facebook') s=`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(u)}`;
+            else if(p==='twitter') s=`https://twitter.com/intent/tweet?url=${encodeURIComponent(u)}`;
+            window.open(s, '_blank');
         }
         lucide.createIcons();
     </script>
