@@ -1,52 +1,57 @@
-// Intersection Observer for Animations
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('is-visible');
     });
-}, { threshold: 0.1 });
+}, { threshold: 0.05 });
+
 document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
-// Load Images from gallery-data.json
+// 1. Fetch Images
 fetch('gallery-data.json')
     .then(res => res.json())
     .then(data => {
         const personaGrid = document.getElementById('persona-grid');
         const publicGrid = document.getElementById('public-grid');
+        
         const createCard = (photo) => {
             const div = document.createElement('div');
-            div.className = "group relative overflow-hidden rounded-lg cursor-pointer aspect-[3/4] bg-gray-900";
-            div.innerHTML = `<img src="${photo.filename}" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">`;
-            div.onclick = () => openModal(photo.filename);
+            div.className = "img-card cursor-pointer group";
+            div.innerHTML = `<img src="${photo.filename}" loading="lazy" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">`;
+            div.onclick = () => {
+                document.getElementById('modal-img').src = photo.filename;
+                document.getElementById('image-modal').classList.remove('hidden');
+                document.getElementById('image-modal').classList.add('active');
+            };
             return div;
         };
+
         data.persona.forEach(p => personaGrid.appendChild(createCard(p)));
         data.public.forEach(p => publicGrid.appendChild(createCard(p)));
     });
 
-// Load Videos from video-data.json
+// 2. Fetch Reels with explicit Reload command
 fetch('video-data.json')
     .then(res => res.json())
     .then(data => {
         const videoGrid = document.getElementById('video-grid');
+        videoGrid.innerHTML = ''; // Clear loading message
+
         data.reels.forEach(reel => {
             const div = document.createElement('div');
-            div.className = "flex justify-center";
-            div.innerHTML = `<blockquote class="instagram-media" data-instgrm-permalink="${reel.url}" data-instgrm-version="14" style="width:100%; border-radius:12px; background:#000;"></blockquote>`;
+            div.className = "flex justify-center min-h-[400px]"; 
+            div.innerHTML = `<blockquote class="instagram-media" data-instgrm-permalink="${reel.url}" data-instgrm-version="14" style="width:95%; border-radius:12px; background:#000; margin:0 auto;"></blockquote>`;
             videoGrid.appendChild(div);
         });
-        // Refresh Instagram embeds after adding them
-        if (window.instgrm) window.instgrm.Embeds.process();
+
+        // THIS IS THE FIX: Tell Instagram to find the new blockquotes and turn them into videos
+        if (window.instgrm) {
+            window.instgrm.Embeds.process();
+        }
     });
 
-function openModal(src) {
-    const m = document.getElementById('image-modal');
-    document.getElementById('modal-img').src = src;
-    m.classList.remove('hidden');
-    setTimeout(() => m.classList.add('active'), 10);
-}
-
 document.getElementById('close-modal').onclick = () => {
-    const m = document.getElementById('image-modal');
-    m.classList.remove('active');
-    setTimeout(() => m.classList.add('hidden'), 300);
+    document.getElementById('image-modal').classList.remove('active');
+    setTimeout(() => document.getElementById('image-modal').classList.add('hidden'), 300);
 };
+
+lucide.createIcons();
