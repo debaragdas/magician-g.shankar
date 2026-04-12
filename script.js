@@ -1,4 +1,4 @@
-// 1. SCROLL REVEAL ANIMATION
+// 1. SCROLL ANIMATION LOGIC
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -9,7 +9,7 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
-// 2. LOAD IMAGE GALLERIES (Persona & Public)
+// 2. LOAD IMAGE GALLERIES
 fetch('gallery-data.json')
     .then(res => res.json())
     .then(data => {
@@ -22,58 +22,65 @@ fetch('gallery-data.json')
             div.innerHTML = `
                 <img src="${photo.filename}" 
                      loading="lazy" 
-                     alt="Gouri Shankar Das Performance"
+                     alt="${photo.caption}"
                      class="w-full h-full object-cover transition duration-500 group-hover:scale-110"
-                     onerror="this.src='https://via.placeholder.com/400x600?text=Image+Missing'">
+                     onerror="this.src='https://via.placeholder.com/400x600?text=Image+Not+Found'">
             `;
             div.onclick = () => openModal(photo.filename);
             return div;
         };
 
-        if (data.persona) data.persona.forEach(p => personaGrid.appendChild(createCard(p)));
-        if (data.public) data.public.forEach(p => publicGrid.appendChild(createCard(p)));
+        // Populate Persona Gallery (1-8)
+        if (data.persona) {
+            data.persona.forEach(p => personaGrid.appendChild(createCard(p)));
+        }
+        
+        // Populate Public Gallery (1-18)
+        if (data.public) {
+            data.public.forEach(p => publicGrid.appendChild(createCard(p)));
+        }
     })
-    .catch(err => console.error("Gallery Load Error:", err));
+    .catch(err => console.error("Error loading gallery data:", err));
 
 // 3. LOAD INSTAGRAM REELS
 fetch('video-data.json')
     .then(res => res.json())
     .then(data => {
         const videoGrid = document.getElementById('video-grid');
-        videoGrid.innerHTML = ''; // Clear fallback text
+        videoGrid.innerHTML = ''; 
 
         data.reels.forEach(reel => {
             const div = document.createElement('div');
-            div.className = "flex justify-center min-h-[450px] w-full bg-black/20 rounded-xl"; 
+            div.className = "flex justify-center min-h-[450px] w-full bg-white/5 rounded-xl overflow-hidden"; 
             div.innerHTML = `
                 <blockquote class="instagram-media" 
                             data-instgrm-permalink="${reel.url}" 
                             data-instgrm-version="14" 
-                            style="width:100%; border-radius:12px; background:#000; border:0; margin:0;">
+                            style="width:100%; border:0; margin:0;">
                 </blockquote>
             `;
             videoGrid.appendChild(div);
         });
 
-        // Force Instagram to process the new links
-        processInstagram();
+        // Trigger Instagram's script to process the new blocks
+        refreshInstagram();
     })
-    .catch(err => console.error("Video Load Error:", err));
+    .catch(err => console.error("Error loading video data:", err));
 
-// 4. INSTAGRAM EMBED PROTECTION
-function processInstagram() {
-    const checkInstgrm = setInterval(() => {
-        if (window.instgrm) {
+// 4. INSTAGRAM PROCESSOR (Ensures reels load on all devices)
+function refreshInstagram() {
+    const checkInterval = setInterval(() => {
+        if (window.instgrm && window.instgrm.Embeds) {
             window.instgrm.Embeds.process();
-            clearInterval(checkInstgrm);
+            clearInterval(checkInterval);
         }
     }, 500);
     
-    // Stop trying after 10 seconds to save battery
-    setTimeout(() => clearInterval(checkInstgrm), 10000);
+    // Stop trying after 10 seconds to save performance
+    setTimeout(() => clearInterval(checkInterval), 10000);
 }
 
-// 5. MODAL LOGIC
+// 5. IMAGE MODAL LOGIC
 function openModal(src) {
     const modal = document.getElementById('image-modal');
     const modalImg = document.getElementById('modal-img');
