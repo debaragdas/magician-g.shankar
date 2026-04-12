@@ -12,7 +12,7 @@
     <style>
         body { font-family: 'Inter', sans-serif; background:#050508; color:#e2e8f0; margin:0; overflow-x: hidden; }
         
-        /* Premium Navigation */
+        /* Navigation */
         nav { background:rgba(5,5,8,0.85); backdrop-filter:blur(20px); border-bottom: 1px solid rgba(255,255,255,0.03); }
         .nav-link { padding:10px 16px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing: 0.2em; color: rgba(255,255,255,0.6); transition: 0.4s; }
         .nav-link:hover { color: #a855f7; text-shadow: 0 0 10px rgba(168, 85, 247, 0.5); }
@@ -43,7 +43,7 @@
             100% { transform: scale(1.1) translateY(0); } 
         }
 
-        /* Reels Grid - PC & Mobile Optimization */
+        /* Reels Grid */
         #video-grid { 
             display: grid; 
             grid-template-columns: 1fr; 
@@ -77,26 +77,21 @@
         .btn-mail { background: #f8fafc; color: #0f172a; }
         .social-btn:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.5); border-color: rgba(168, 85, 247, 0.4); }
 
-        /* Professional Review Card */
+        /* Enhanced Google Panel */
         .review-card {
-            background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 32px;
-            padding: 50px 30px;
+            background: linear-gradient(160deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 40px;
+            padding: 60px 40px;
             text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
         .star-pulse { animation: starGlow 2s infinite alternate; color: #fbbf24; }
-        @keyframes starGlow { from { filter: drop-shadow(0 0 2px #fbbf24); } to { filter: drop-shadow(0 0 8px #f59e0b); } }
+        @keyframes starGlow { from { filter: drop-shadow(0 0 2px #fbbf24); } to { filter: drop-shadow(0 0 10px #f59e0b); } }
 
         /* Image Cards */
         .img-card { border-radius: 20px; overflow: hidden; background: #111; border: 1px solid rgba(255,255,255,0.05); transition: 0.5s; }
         .img-card:hover { border-color: #a855f7; transform: scale(1.02); }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #08080c; }
-        ::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #a855f7; }
     </style>
 </head>
 
@@ -116,9 +111,8 @@
         <img src="images/background.png" class="bg-animate">
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-[#050508]"></div>
         <div class="relative z-10 text-center px-6">
-            <span class="text-purple-500 font-bold tracking-[0.6em] uppercase text-[10px] md:text-sm block mb-4 opacity-80">The Mentalism Experience</span>
             <h1 class="text-5xl md:text-9xl font-bold tracking-tighter text-white uppercase leading-none">Gouri Shankar Das</h1>
-            <div class="h-[1px] w-20 bg-purple-600 mx-auto my-6"></div>
+            <div class="h-[1px] w-24 bg-purple-600 mx-auto my-8 opacity-50"></div>
             <p class="text-gray-400 tracking-[0.4em] uppercase text-[10px] md:text-lg font-light">Hypno-Mentalist • Illusionist</p>
         </div>
     </section>
@@ -127,14 +121,22 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
             <div class="relative group">
                 <div class="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-                <img src="images/profile.png" class="relative w-full rounded-3xl shadow-2xl grayscale hover:grayscale-0 transition duration-700">
+                <img src="images/profile.png" class="relative w-full rounded-3xl shadow-2xl transition duration-700">
             </div>
             <div class="space-y-8">
-                <h2 class="text-4xl font-bold text-white uppercase tracking-tight">Crafting Real-Life <span class="text-purple-500">Mysteries</span></h2>
-                <p class="text-gray-400 text-lg leading-relaxed font-light">
-                    With over <strong>12 years</strong> of profound exploration into the subconscious, Gouri Shankar Das has redefined modern mentalism. He doesn't just perform; he creates a shift in perception.
-                </p>
-                <div class="grid grid-cols-2 gap-4">
+                <h2 class="text-4xl font-bold text-white uppercase tracking-tight">Master of the <span class="text-purple-500">Subconscious</span></h2>
+                <div class="space-y-4 text-gray-400 text-lg leading-relaxed font-light">
+                    <p>
+                        Gouri Shankar Das is not just a performer; he is a psychological architect who bridges the gap between reality and the impossible. With over <strong>12 years of professional expertise</strong>, he has mastered the rare art of Hypno-Mentalism, blending deep psychological insight with world-class illusion.
+                    </p>
+                    <p>
+                        His stage presence is magnetic, guiding audiences through immersive journeys where thoughts are read, decisions are influenced, and the subconscious mind takes center stage. From elite corporate events to grand public theaters, Gouri Shankar has captivated thousands, leaving a trail of wonder and intellectual curiosity.
+                    </p>
+                    <p>
+                        Specializing in suggestion, telepathy, and high-level psychological influence, he continues to push the boundaries of what is possible, proving that the mind is the greatest stage of all.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 gap-4 pt-4">
                     <div class="p-6 bg-white/[0.03] border border-white/5 rounded-2xl">
                         <span class="block text-3xl font-bold text-white">1000+</span>
                         <span class="text-[10px] uppercase tracking-widest text-purple-500">Live Shows</span>
@@ -154,30 +156,49 @@
             </div>
     </section>
 
-    <section class="py-32 px-6 max-w-4xl mx-auto">
+    <section class="py-32 px-6 max-w-5xl mx-auto">
         <div class="review-card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" class="w-12 h-12 mx-auto mb-6">
-            <div class="flex justify-center items-center gap-4 mb-4">
-                <span class="text-7xl font-black text-white">5.0</span>
-                <div class="flex star-pulse">
-                    <i data-lucide="star" fill="currentColor"></i>
-                    <i data-lucide="star" fill="currentColor"></i>
-                    <i data-lucide="star" fill="currentColor"></i>
-                    <i data-lucide="star" fill="currentColor"></i>
-                    <i data-lucide="star" fill="currentColor"></i>
+            <div class="flex flex-col items-center mb-12">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" class="w-16 h-16 mb-6">
+                <h3 class="text-white text-2xl font-bold uppercase tracking-widest mb-2">Google Business Rating</h3>
+                <div class="flex items-center gap-6">
+                    <span class="text-8xl font-black text-white">5.0</span>
+                    <div class="text-left">
+                        <div class="flex star-pulse mb-1">
+                            <i data-lucide="star" fill="currentColor"></i>
+                            <i data-lucide="star" fill="currentColor"></i>
+                            <i data-lucide="star" fill="currentColor"></i>
+                            <i data-lucide="star" fill="currentColor"></i>
+                            <i data-lucide="star" fill="currentColor"></i>
+                        </div>
+                        <p class="text-purple-500 font-bold text-sm uppercase tracking-widest">Verified 5-Star Artist</p>
+                    </div>
                 </div>
             </div>
-            <p class="text-gray-500 uppercase tracking-widest text-xs font-bold mb-10">Authentic Audience Reviews</p>
             
-            <div class="space-y-4 mb-12">
-                <div class="bg-white/[0.02] p-6 rounded-2xl text-left border border-white/5">
-                    <p class="text-gray-300 italic">"Absolutely unbelievable. Gouri Shankar doesn't just perform magic; he reads your very thoughts. The best mentalist in the business!"</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                <div class="bg-black/40 p-8 rounded-3xl border border-white/5 text-left">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center font-bold">R</div>
+                        <span class="text-sm font-bold text-white">Rahul K.</span>
+                    </div>
+                    <p class="text-gray-400 italic text-sm">"Absolutely unbelievable. Gouri Shankar doesn't just perform magic; he reads your very thoughts. The best mentalist in the business!"</p>
+                </div>
+                <div class="bg-black/40 p-8 rounded-3xl border border-white/5 text-left">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center font-bold">A</div>
+                        <span class="text-sm font-bold text-white">Ananya S.</span>
+                    </div>
+                    <p class="text-gray-400 italic text-sm">"I was a skeptic, but his hypnosis is real. A mind-bending experience that I will never forget. Highly recommended for any event."</p>
                 </div>
             </div>
 
             <div class="flex flex-col md:flex-row justify-center gap-6">
-                <a href="https://share.google/9cq7KQ6kqxWBdp9OB" target="_blank" class="px-12 py-5 bg-white text-black font-black rounded-full hover:bg-purple-600 hover:text-white transition duration-500">
-                    WRITE A REVIEW
+                <a href="https://share.google/9cq7KQ6kqxWBdp9OB" target="_blank" class="px-12 py-5 bg-white text-black font-black rounded-full hover:bg-purple-600 hover:text-white transition duration-500 flex items-center justify-center gap-3">
+                    <i data-lucide="edit-3" class="w-5 h-5"></i> WRITE A REVIEW
+                </a>
+                <a href="https://share.google/9cq7KQ6kqxWBdp9OB" target="_blank" class="px-12 py-5 border border-white/20 text-white font-bold rounded-full hover:bg-white/10 transition duration-500">
+                    VIEW ALL REVIEWS
                 </a>
             </div>
         </div>
