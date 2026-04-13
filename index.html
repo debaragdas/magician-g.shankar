@@ -286,13 +286,13 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center 30%;
-            animation: slowZoom 30s ease-in-out infinite alternate;
+            object-position: center 40%;
+            animation: slowZoom 15s ease-in-out infinite alternate;
         }
 
         @keyframes slowZoom {
             0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
+            100% { transform: scale(1.08); }
         }
 
         .hero-overlay {
@@ -300,8 +300,8 @@
             inset: 0;
             background: linear-gradient(
                 to bottom,
-                rgba(3, 0, 20, 0.3) 0%,
-                rgba(3, 0, 20, 0.5) 40%,
+                rgba(3, 0, 20, 0.2) 0%,
+                rgba(3, 0, 20, 0.4) 50%,
                 rgba(3, 0, 20, 0.95) 100%
             );
             z-index: 1;
@@ -313,9 +313,9 @@
             height: 600px;
             border-radius: 50%;
             filter: blur(120px);
-            opacity: 0.4;
+            opacity: 0.25;
             z-index: 1;
-            animation: pulse 8s ease-in-out infinite;
+            animation: pulse 6s ease-in-out infinite;
         }
 
         .hero-glow-1 {
@@ -713,7 +713,7 @@
             color: var(--text-muted);
         }
 
-        /* Reels Section - Instagram Style Scrolling */
+        /* Reels Section - Instagram Style Scrolling with Video */
         .reels {
             background: var(--background-light);
             overflow: hidden;
@@ -755,21 +755,23 @@
             width: 100%;
             position: relative;
             overflow: hidden;
-            background: var(--surface-light);
+            background: linear-gradient(135deg, var(--surface-light), var(--surface));
         }
 
-        .reel-thumbnail img {
+        .reel-thumbnail img,
+        .reel-thumbnail video {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
 
-        .reel-item:hover .reel-thumbnail img {
+        .reel-item:hover .reel-thumbnail img,
+        .reel-item:hover .reel-thumbnail video {
             transform: scale(1.05);
         }
 
-        /* Play Button Overlay */
+        /* Play Button Overlay - only shows when video paused */
         .reel-play-overlay {
             position: absolute;
             inset: 0;
@@ -779,10 +781,16 @@
             background: rgba(0, 0, 0, 0.3);
             opacity: 1;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
-        .reel-item:hover .reel-play-overlay {
-            background: rgba(0, 0, 0, 0.5);
+        .reel-play-overlay.playing {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .reel-item:hover .reel-play-overlay:not(.playing) {
+            background: rgba(0, 0, 0, 0.4);
         }
 
         .reel-play-btn {
@@ -795,7 +803,8 @@
             justify-content: center;
             color: white;
             font-size: 1.75rem;
-            text-decoration: none;
+            border: none;
+            cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 10px 40px var(--glow);
         }
@@ -815,22 +824,23 @@
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 1rem;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+            padding: 0.75rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 50%, transparent 100%);
             display: flex;
             justify-content: center;
+            z-index: 5;
         }
 
         .reel-instagram-link a {
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.6rem 1.25rem;
+            padding: 0.5rem 1rem;
             background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
             border-radius: 50px;
             color: white;
             text-decoration: none;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 600;
             transition: all 0.3s ease;
         }
@@ -1532,6 +1542,27 @@
                 display: block;
             }
 
+            /* Mobile hero fixes - reduce glow, show face */
+            .hero-bg img {
+                object-position: center 35%;
+            }
+
+            .hero-glow {
+                width: 300px;
+                height: 300px;
+                opacity: 0.15;
+                filter: blur(80px);
+            }
+
+            .hero-overlay {
+                background: linear-gradient(
+                    to bottom,
+                    rgba(3, 0, 20, 0.15) 0%,
+                    rgba(3, 0, 20, 0.3) 50%,
+                    rgba(3, 0, 20, 0.95) 100%
+                );
+            }
+
             .about-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
@@ -1778,7 +1809,7 @@
                             <div class="review-header">
                                 <div class="review-avatar purple">R</div>
                                 <div class="review-info">
-                                    <h4>Rahul Kumar Singh</h4>
+                                    <h4>rahulksingh1990</h4>
                                     <div class="review-stars">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
@@ -1794,7 +1825,7 @@
                             <div class="review-header">
                                 <div class="review-avatar blue">A</div>
                                 <div class="review-info">
-                                    <h4>Ananya Sharma</h4>
+                                    <h4>ananya.sharma92</h4>
                                     <div class="review-stars">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
@@ -1810,7 +1841,7 @@
                             <div class="review-header">
                                 <div class="review-avatar green">P</div>
                                 <div class="review-info">
-                                    <h4>Priyanka Mukherjee</h4>
+                                    <h4>priyanka.mukherjee85</h4>
                                     <div class="review-stars">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
@@ -1826,7 +1857,7 @@
                             <div class="review-header">
                                 <div class="review-avatar orange">S</div>
                                 <div class="review-info">
-                                    <h4>Suresh Venkataraman</h4>
+                                    <h4>sureshvenkat.official</h4>
                                     <div class="review-stars">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
@@ -1842,7 +1873,7 @@
                             <div class="review-header">
                                 <div class="review-avatar pink">M</div>
                                 <div class="review-info">
-                                    <h4>Meera Raghunath</h4>
+                                    <h4>meera.raghunath</h4>
                                     <div class="review-stars">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
@@ -1858,7 +1889,7 @@
                             <div class="review-header">
                                 <div class="review-avatar teal">V</div>
                                 <div class="review-info">
-                                    <h4>Vikram Deshmukh</h4>
+                                    <h4>vikram.deshmukh23</h4>
                                     <div class="review-stars">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
@@ -1874,7 +1905,7 @@
                             <div class="review-header">
                                 <div class="review-avatar indigo">N</div>
                                 <div class="review-info">
-                                    <h4>Neha Goswami</h4>
+                                    <h4>nehagoswami.life</h4>
                                     <div class="review-stars">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
@@ -1890,7 +1921,7 @@
                             <div class="review-header">
                                 <div class="review-avatar red">K</div>
                                 <div class="review-info">
-                                    <h4>Karan Johar Patel</h4>
+                                    <h4>karanjpatel007</h4>
                                     <div class="review-stars">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
@@ -1906,7 +1937,7 @@
                             <div class="review-header">
                                 <div class="review-avatar cyan">D</div>
                                 <div class="review-info">
-                                    <h4>Deepika Lakshmi Nair</h4>
+                                    <h4>deepika.lakshmii</h4>
                                     <div class="review-stars">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
@@ -1922,7 +1953,7 @@
                             <div class="review-header">
                                 <div class="review-avatar amber">A</div>
                                 <div class="review-info">
-                                    <h4>Arjun Prakash Reddy</h4>
+                                    <h4>arjunpreddy.in</h4>
                                     <div class="review-stars">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
