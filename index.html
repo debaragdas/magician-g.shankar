@@ -267,12 +267,13 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center 30%;
             animation: slowZoom 30s ease-in-out infinite alternate;
         }
 
         @keyframes slowZoom {
-            0% { transform: scale(1) translateY(0); }
-            100% { transform: scale(1.1) translateY(-2%); }
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
         }
 
         .hero-overlay {
@@ -694,40 +695,105 @@
             box-shadow: 0 15px 40px rgba(124, 58, 237, 0.2);
         }
 
-        .reel-embed {
+        .reel-thumbnail {
             aspect-ratio: 9/16;
             width: 100%;
+            position: relative;
+            overflow: hidden;
+            background: var(--surface-light);
         }
 
-        .reel-embed iframe {
+        .reel-thumbnail img {
             width: 100%;
             height: 100%;
-            border: none;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .reel-card:hover .reel-thumbnail img {
+            transform: scale(1.05);
         }
 
         .reel-overlay {
             position: absolute;
-            top: 0.75rem;
-            right: 0.75rem;
-            z-index: 10;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 50%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .reel-link {
-            width: 36px;
-            height: 36px;
-            background: rgba(0, 0, 0, 0.7);
+        .reel-card:hover .reel-overlay {
+            opacity: 1;
+        }
+
+        .reel-play-btn {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
+            font-size: 1.75rem;
             text-decoration: none;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.5);
+        }
+
+        .reel-play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(124, 58, 237, 0.6);
+        }
+
+        .reel-play-btn i {
+            margin-left: 4px;
+        }
+
+        .reel-premium-badge {
+            position: absolute;
+            top: 0.75rem;
+            left: 0.75rem;
+            background: linear-gradient(135deg, var(--gold), #f59e0b);
+            padding: 0.35rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #000;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .reel-instagram-btn {
+            position: absolute;
+            bottom: 0.75rem;
+            left: 0.75rem;
+            right: 0.75rem;
+            background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            padding: 0.6rem 1rem;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: white;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
             transition: all 0.3s ease;
         }
 
-        .reel-link:hover {
-            background: var(--primary);
-            transform: scale(1.1);
+        .reel-instagram-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(225, 48, 108, 0.4);
         }
 
         .reels-cta {
@@ -857,6 +923,14 @@
 
         .review-avatar.purple { background: var(--primary); }
         .review-avatar.blue { background: #3b82f6; }
+        .review-avatar.green { background: #22c55e; }
+        .review-avatar.orange { background: #f97316; }
+        .review-avatar.pink { background: #ec4899; }
+        .review-avatar.teal { background: #14b8a6; }
+        .review-avatar.indigo { background: #6366f1; }
+        .review-avatar.red { background: #ef4444; }
+        .review-avatar.cyan { background: #06b6d4; }
+        .review-avatar.amber { background: #f59e0b; }
 
         .review-info h4 {
             font-family: 'Inter', sans-serif;
@@ -1439,7 +1513,7 @@
                 <div class="logo-icon">
                     <i class="fas fa-hat-wizard"></i>
                 </div>
-                <div class="logo-text">GS<span>.</span>Magic</div>
+                <div class="logo-text">Gshankar<span>.</span>magic</div>
             </a>
             <ul class="nav-links">
                 <li><a href="#home" class="active">Home</a></li>
@@ -1637,6 +1711,134 @@
                             </div>
                             <p class="review-text">"I was a skeptic, but his hypnosis is real. A mind-bending experience that I will never forget. Highly recommended for any event."</p>
                         </div>
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="review-avatar green">P</div>
+                                <div class="review-info">
+                                    <h4>Priya M.</h4>
+                                    <div class="review-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="review-text">"We hired him for our corporate event and he exceeded all expectations. The entire office is still talking about his performance weeks later!"</p>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="review-avatar orange">S</div>
+                                <div class="review-info">
+                                    <h4>Suresh T.</h4>
+                                    <div class="review-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="review-text">"The most captivating show I have ever witnessed. Gouri Shankar has an incredible ability to connect with the audience and leave everyone amazed."</p>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="review-avatar pink">M</div>
+                                <div class="review-info">
+                                    <h4>Meera R.</h4>
+                                    <div class="review-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="review-text">"Booked him for my wedding reception and it was the highlight of the evening. Guests are still asking me how he knew their personal details!"</p>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="review-avatar teal">V</div>
+                                <div class="review-info">
+                                    <h4>Vikram D.</h4>
+                                    <div class="review-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="review-text">"Professional, punctual, and absolutely phenomenal. His mind-reading act left our entire team speechless. 10/10 would recommend!"</p>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="review-avatar indigo">N</div>
+                                <div class="review-info">
+                                    <h4>Neha G.</h4>
+                                    <div class="review-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="review-text">"An extraordinary talent! His performance at our college fest was beyond anything we imagined. Students and faculty were equally mesmerized."</p>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="review-avatar red">K</div>
+                                <div class="review-info">
+                                    <h4>Karan J.</h4>
+                                    <div class="review-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="review-text">"I've seen many magicians but Gouri Shankar is on another level. His psychological illusions are mind-blowing and truly unique!"</p>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="review-avatar cyan">D</div>
+                                <div class="review-info">
+                                    <h4>Deepika L.</h4>
+                                    <div class="review-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="review-text">"Absolutely fantastic! He performed at our birthday party and made it an unforgettable experience. Kids and adults were equally entertained."</p>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="review-avatar amber">A</div>
+                                <div class="review-info">
+                                    <h4>Arjun P.</h4>
+                                    <div class="review-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="review-text">"The way he predicts thoughts and influences decisions is absolutely incredible. A true master of his craft. Worth every penny!"</p>
+                        </div>
                     </div>
                     <div class="reviews-nav">
                         <button id="reviewPrev"><i class="fas fa-chevron-left"></i></button>
@@ -1745,7 +1947,7 @@
             <div class="logo-icon">
                 <i class="fas fa-hat-wizard"></i>
             </div>
-            <div class="logo-text">GS<span>.</span>Magic</div>
+            <div class="logo-text">Gshankar<span>.</span>magic</div>
         </div>
         <p class="footer-text">Experience the extraordinary world of mind and illusion</p>
         <div class="footer-links">
