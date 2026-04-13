@@ -80,7 +80,7 @@ function initMobileMenu() {
 }
 
 // =============================================
-// INSTAGRAM REELS
+// INSTAGRAM REELS - Thumbnail Style with Premium Play
 // =============================================
 
 async function initReels() {
@@ -90,34 +90,61 @@ async function initReels() {
         const response = await fetch('video-data.json');
         const data = await response.json();
         
-        reelsGrid.innerHTML = data.reels.map(reel => {
-            const reelId = extractReelId(reel.url);
+        reelsGrid.innerHTML = data.reels.map((reel, index) => {
             return `
                 <div class="reel-card">
-                    <div class="reel-overlay">
-                        <a href="${reel.url}" class="reel-link" target="_blank" rel="noopener">
-                            <i class="fas fa-external-link-alt"></i>
+                    <div class="reel-thumbnail">
+                        <img src="${reel.thumbnail || 'images/reel-thumbnail-' + (index + 1) + '.jpg'}" alt="Reel ${index + 1}" onerror="this.src='images/default-reel.jpg'">
+                        <div class="reel-premium-badge">
+                            <i class="fas fa-crown"></i>
+                            Premium
+                        </div>
+                        <div class="reel-overlay">
+                            <a href="${reel.url}" class="reel-play-btn" target="_blank" rel="noopener">
+                                <i class="fas fa-play"></i>
+                            </a>
+                        </div>
+                        <a href="${reel.url}" class="reel-instagram-btn" target="_blank" rel="noopener">
+                            <i class="fab fa-instagram"></i>
+                            Watch on Instagram
                         </a>
-                    </div>
-                    <div class="reel-embed">
-                        <iframe 
-                            src="https://www.instagram.com/reel/${reelId}/embed" 
-                            allowfullscreen
-                            loading="lazy"
-                        ></iframe>
                     </div>
                 </div>
             `;
         }).join('');
     } catch (error) {
         console.error('Error loading reels:', error);
-        reelsGrid.innerHTML = '<p style="text-align: center; color: var(--text-muted);">Unable to load reels. Please try again later.</p>';
+        // Fallback with sample reels if JSON fails
+        const fallbackReels = [
+            { url: 'https://www.instagram.com/gshankar.magic' },
+            { url: 'https://www.instagram.com/gshankar.magic' },
+            { url: 'https://www.instagram.com/gshankar.magic' },
+            { url: 'https://www.instagram.com/gshankar.magic' }
+        ];
+        
+        reelsGrid.innerHTML = fallbackReels.map((reel, index) => {
+            return `
+                <div class="reel-card">
+                    <div class="reel-thumbnail">
+                        <img src="images/reel-thumbnail-${index + 1}.jpg" alt="Reel ${index + 1}" onerror="this.style.display='none'">
+                        <div class="reel-premium-badge">
+                            <i class="fas fa-crown"></i>
+                            Premium
+                        </div>
+                        <div class="reel-overlay">
+                            <a href="${reel.url}" class="reel-play-btn" target="_blank" rel="noopener">
+                                <i class="fas fa-play"></i>
+                            </a>
+                        </div>
+                        <a href="${reel.url}" class="reel-instagram-btn" target="_blank" rel="noopener">
+                            <i class="fab fa-instagram"></i>
+                            Watch on Instagram
+                        </a>
+                    </div>
+                </div>
+            `;
+        }).join('');
     }
-}
-
-function extractReelId(url) {
-    const match = url.match(/reel\/([^\/\?]+)/);
-    return match ? match[1] : '';
 }
 
 // =============================================
