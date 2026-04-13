@@ -80,7 +80,7 @@ function initMobileMenu() {
 }
 
 // =============================================
-// INSTAGRAM REELS - Clean Thumbnail Style with Play & Visit Options
+// INSTAGRAM REELS - Direct Video Playback with Instagram Link
 // =============================================
 
 async function initReels() {
@@ -92,44 +92,70 @@ async function initReels() {
         const data = await response.json();
         
         reelsGrid.innerHTML = data.reels.map((reel, index) => {
-            return `
-                <div class="reel-item">
-                    <div class="reel-thumbnail">
-                        <img src="${reel.thumbnail || 'images/reel-thumbnail-' + (index + 1) + '.jpg'}" alt="Reel ${index + 1}" onerror="this.src='images/default-reel.jpg'">
-                        <div class="reel-play-overlay">
-                            <a href="${reel.url}" class="reel-play-btn" target="_blank" rel="noopener" title="Play on Instagram">
-                                <i class="fas fa-play"></i>
-                            </a>
-                        </div>
-                        <div class="reel-instagram-link">
-                            <a href="${instagramProfileUrl}" target="_blank" rel="noopener">
-                                <i class="fab fa-instagram"></i>
-                                Visit Profile
-                            </a>
+            const hasVideo = reel.video && reel.video.trim() !== '';
+            const thumbnailSrc = reel.thumbnail || `images/reel-thumbnail-${index + 1}.jpg`;
+            
+            if (hasVideo) {
+                return `
+                    <div class="reel-item" data-reel-index="${index}">
+                        <div class="reel-thumbnail">
+                            <video 
+                                src="${reel.video}" 
+                                poster="${thumbnailSrc}"
+                                loop 
+                                muted 
+                                playsinline
+                                preload="metadata"
+                                id="reelVideo${index}"
+                            ></video>
+                            <div class="reel-play-overlay" id="reelOverlay${index}">
+                                <button class="reel-play-btn" onclick="toggleReelVideo(${index})" title="Play Video">
+                                    <i class="fas fa-play" id="reelIcon${index}"></i>
+                                </button>
+                            </div>
+                            <div class="reel-instagram-link">
+                                <a href="${reel.url || instagramProfileUrl}" target="_blank" rel="noopener">
+                                    <i class="fab fa-instagram"></i>
+                                    Watch on Instagram
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            `;
+                `;
+            } else {
+                return `
+                    <div class="reel-item" data-reel-index="${index}">
+                        <div class="reel-thumbnail">
+                            <img src="${thumbnailSrc}" alt="Reel ${index + 1}" onerror="this.style.background='linear-gradient(135deg, #8b5cf6, #ec4899)'">
+                            <div class="reel-play-overlay">
+                                <a href="${reel.url || instagramProfileUrl}" class="reel-play-btn" target="_blank" rel="noopener" title="Watch on Instagram">
+                                    <i class="fas fa-play"></i>
+                                </a>
+                            </div>
+                            <div class="reel-instagram-link">
+                                <a href="${instagramProfileUrl}" target="_blank" rel="noopener">
+                                    <i class="fab fa-instagram"></i>
+                                    Visit Profile
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
         }).join('');
+        
     } catch (error) {
         console.error('Error loading reels:', error);
         // Fallback with sample reels if JSON fails
-        const fallbackReels = [
-            { url: instagramProfileUrl },
-            { url: instagramProfileUrl },
-            { url: instagramProfileUrl },
-            { url: instagramProfileUrl },
-            { url: instagramProfileUrl },
-            { url: instagramProfileUrl }
-        ];
+        const fallbackReels = Array(6).fill(null);
         
-        reelsGrid.innerHTML = fallbackReels.map((reel, index) => {
+        reelsGrid.innerHTML = fallbackReels.map((_, index) => {
             return `
-                <div class="reel-item">
+                <div class="reel-item" data-reel-index="${index}">
                     <div class="reel-thumbnail">
                         <img src="images/reel-thumbnail-${index + 1}.jpg" alt="Reel ${index + 1}" onerror="this.style.background='linear-gradient(135deg, #8b5cf6, #ec4899)'">
                         <div class="reel-play-overlay">
-                            <a href="${reel.url}" class="reel-play-btn" target="_blank" rel="noopener" title="Play on Instagram">
+                            <a href="${instagramProfileUrl}" class="reel-play-btn" target="_blank" rel="noopener" title="Watch on Instagram">
                                 <i class="fas fa-play"></i>
                             </a>
                         </div>
@@ -145,6 +171,45 @@ async function initReels() {
         }).join('');
     }
 }
+
+// Toggle video play/pause
+function toggleReelVideo(index) {
+    const video = document.getElementById(`reelVideo${index}`);
+    const overlay = document.getElementById(`reelOverlay${index}`);
+    const icon = document.getElementById(`reelIcon${index}`);
+    
+    if (!video) return;
+    
+    // Pause all other videos first
+    document.querySelectorAll('.reel-thumbnail video').forEach((v, i) => {
+        if (i !== index && !v.paused) {
+            v.pause();
+            const otherOverlay = document.getElementById(`reelOverlay${i}`);
+            const otherIcon = document.getElementById(`reelIcon${i}`);
+            if (otherOverlay) otherOverlay.classList.remove('playing');
+            if (otherIcon) otherIcon.classList.replace('fa-pause', 'fa-play');
+        }
+    });
+    
+    if (video.paused) {
+        video.play();
+        overlay.classList.add('playing');
+        icon.classList.replace('fa-play', 'fa-pause');
+    } else {
+        video.pause();
+        overlay.classList.remove('playing');
+        icon.classList.replace('fa-pause', 'fa-play');
+    }
+}
+
+// Allow clicking on video to toggle play/pause
+document.addEventListener('click', function(e) {
+    const reelItem = e.target.closest('.reel-item');
+    if (reelItem && e.target.tagName === 'VIDEO') {
+        const index = reelItem.dataset.reelIndex;
+        toggleReelVideo(parseInt(index));
+    }
+});
 
 // =============================================
 // GALLERY
