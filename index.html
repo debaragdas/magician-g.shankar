@@ -1,264 +1,1785 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GOURI SHANKAR DAS | Hypno-Mentalist & Illusionist</title>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+    <title>Gouri Shankar Das | Hypno-Mentalist & Illusionist</title>
+    <meta name="description" content="Experience the extraordinary world of Gouri Shankar Das - India's premier Hypno-Mentalist & Illusionist with 12+ years of mesmerizing performances.">
+    <meta name="keywords" content="mentalist, hypnotist, illusionist, mind reader, Gouri Shankar Das, magic show, corporate events">
+    <meta name="author" content="Gouri Shankar Das">
+    <meta property="og:title" content="Gouri Shankar Das | Hypno-Mentalist & Illusionist">
+    <meta property="og:description" content="Experience the extraordinary world of mind reading and psychological illusion.">
+    <meta property="og:image" content="images/profile.png">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#7c3aed">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        body { font-family: 'Inter', sans-serif; background:#050508; color:#e2e8f0; margin:0; overflow-x: hidden; }
-        
-        /* Navigation */
-        nav { background:rgba(5,5,8,0.85); backdrop-filter:blur(20px); border-bottom: 1px solid rgba(255,255,255,0.03); }
-        .nav-link { padding:10px 16px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing: 0.2em; color: rgba(255,255,255,0.6); transition: 0.4s; }
-        .nav-link:hover { color: #a855f7; text-shadow: 0 0 10px rgba(168, 85, 247, 0.5); }
+        :root {
+            --primary: #7c3aed;
+            --primary-light: #a78bfa;
+            --primary-dark: #5b21b6;
+            --background: #0a0a0f;
+            --background-light: #111118;
+            --surface: #1a1a24;
+            --surface-light: #252532;
+            --text: #ffffff;
+            --text-muted: #a1a1aa;
+            --text-dim: #71717a;
+            --accent: #c084fc;
+            --gold: #fbbf24;
+            --border: rgba(124, 58, 237, 0.2);
+            --glow: rgba(124, 58, 237, 0.4);
+        }
 
-        /* Cinematic Hero Movement */
-        .hero-container {
-            position: relative;
-            height: 95vh;
-            width: 100%;
-            overflow: hidden;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--background);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-light);
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: all 0.4s ease;
+            background: transparent;
+        }
+
+        .nav.scrolled {
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 0.75rem 2rem;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #000;
+            font-size: 1.25rem;
+            position: relative;
+            overflow: hidden;
         }
-        .bg-animate { 
+
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            background: var(--background);
+            border-radius: 10px;
+        }
+
+        .logo-icon i {
+            position: relative;
+            z-index: 1;
+            color: var(--primary-light);
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .logo-text span {
+            color: var(--primary-light);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--text);
+            background: rgba(124, 58, 237, 0.1);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 1px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* Mobile Navigation */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 10, 15, 0.98);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-nav.open {
+            display: flex;
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .mobile-nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            padding: 0.75rem 2rem;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-nav a:hover {
+            color: var(--primary-light);
+        }
+
+        .mobile-nav-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: slowZoom 30s ease-in-out infinite alternate;
+        }
+
+        @keyframes slowZoom {
+            0% { transform: scale(1) translateY(0); }
+            100% { transform: scale(1.1) translateY(-2%); }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(10, 10, 15, 0.4) 0%,
+                rgba(10, 10, 15, 0.6) 40%,
+                rgba(10, 10, 15, 0.95) 100%
+            );
+            z-index: 1;
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.3;
+            z-index: 1;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        .hero-glow-1 {
+            background: var(--primary);
+            top: -200px;
+            right: -200px;
+        }
+
+        .hero-glow-2 {
+            background: var(--accent);
+            bottom: -200px;
+            left: -200px;
+            animation-delay: -4s;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.1); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+            max-width: 900px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(124, 58, 237, 0.15);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--primary-light);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-badge .dot {
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: blink 2s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text) 0%, var(--primary-light) 50%, var(--text) 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out 0.3s both, shimmer 5s linear infinite;
+        }
+
+        @keyframes shimmer {
+            to { background-position: 200% center; }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            color: var(--primary-light);
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .hero-tagline {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.75rem;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(124, 58, 237, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            background: rgba(124, 58, 237, 0.1);
+            border-color: var(--primary);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .scroll-indicator i {
+            color: var(--text-muted);
+            font-size: 1.5rem;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-light);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .section-title span {
+            color: var(--primary-light);
+        }
+
+        .section-desc {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(180deg, var(--background) 0%, var(--background-light) 100%);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image-wrapper {
+            position: relative;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .about-badge {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            padding: 1rem 1.25rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.4);
+            z-index: 2;
+        }
+
+        .about-badge i {
+            color: var(--gold);
+        }
+
+        .about-frame {
             position: absolute;
             width: 100%;
             height: 100%;
-            object-fit: cover; 
-            object-position: center 15%; 
-            opacity: 0.4;
-            animation: slowCinema 25s infinite ease-in-out; 
-        }
-        @keyframes slowCinema { 
-            0% { transform: scale(1.1) translateY(0); } 
-            50% { transform: scale(1) translateY(-10px); } 
-            100% { transform: scale(1.1) translateY(0); } 
+            border: 2px solid var(--primary);
+            border-radius: 20px;
+            top: 20px;
+            left: 20px;
+            z-index: -1;
+            opacity: 0.3;
         }
 
-        /* Reels Grid */
-        #video-grid { 
-            display: grid; 
-            grid-template-columns: 1fr; 
-            gap: 30px; 
-            max-width: 1200px; 
-            margin: 0 auto;
-            padding: 0 20px;
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
         }
-        @media(min-width:768px){ #video-grid { grid-template-columns: repeat(3, 1fr); } }
 
-        /* Social Interface */
+        .about-content h2 span {
+            color: var(--primary-light);
+        }
+
+        .about-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-tag {
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px solid var(--border);
+            padding: 0.375rem 0.875rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--primary-light);
+        }
+
+        .about-text {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .about-text strong {
+            color: var(--text);
+        }
+
+        .about-text em {
+            color: var(--primary-light);
+            font-style: italic;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.2);
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(124, 58, 237, 0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.75rem;
+            color: var(--primary-light);
+            font-size: 1.25rem;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Reels Section */
+        .reels {
+            background: var(--background-light);
+        }
+
+        .reels-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .reel-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .reel-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(124, 58, 237, 0.2);
+        }
+
+        .reel-embed {
+            aspect-ratio: 9/16;
+            width: 100%;
+        }
+
+        .reel-embed iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .reel-overlay {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            z-index: 10;
+        }
+
+        .reel-link {
+            width: 36px;
+            height: 36px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .reel-link:hover {
+            background: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .reels-cta {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        /* Reviews Section */
+        .reviews {
+            background: var(--background);
+            overflow: hidden;
+        }
+
+        .reviews-wrapper {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .reviews-stats {
+            background: linear-gradient(135deg, var(--surface), var(--surface-light));
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            text-align: center;
+        }
+
+        .reviews-rating {
+            font-size: 5rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(135deg, var(--gold), #fde68a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .reviews-stars {
+            display: flex;
+            justify-content: center;
+            gap: 0.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .reviews-stars i {
+            color: var(--gold);
+            font-size: 1.25rem;
+        }
+
+        .reviews-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .reviews-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: white;
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
+        }
+
+        .reviews-logo img {
+            height: 24px;
+        }
+
+        .reviews-logo span {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .btn-review {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .reviews-carousel {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reviews-track {
+            display: flex;
+            gap: 1.5rem;
+            transition: transform 0.5s ease;
+        }
+
+        .review-card {
+            flex: 0 0 350px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .review-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .review-avatar.purple { background: var(--primary); }
+        .review-avatar.blue { background: #3b82f6; }
+
+        .review-info h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .review-stars {
+            display: flex;
+            gap: 0.125rem;
+        }
+
+        .review-stars i {
+            color: var(--gold);
+            font-size: 0.75rem;
+        }
+
+        .review-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .reviews-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .reviews-nav button {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .reviews-nav button:hover {
+            border-color: var(--primary);
+            background: rgba(124, 58, 237, 0.1);
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: var(--background-light);
+        }
+
+        .gallery-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 3rem;
+            background: var(--surface);
+            padding: 0.5rem;
+            border-radius: 16px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid var(--border);
+        }
+
+        .gallery-tab {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-tab:hover {
+            color: var(--text);
+        }
+
+        .gallery-tab.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 1rem;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-caption {
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .gallery-expand {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-expand {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .gallery-hidden {
+            display: none;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .lightbox.open {
+            display: flex;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: transform 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            transform: scale(1.1);
+        }
+
+        .lightbox-content {
+            max-width: 90vw;
+            max-height: 85vh;
+            position: relative;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-nav:hover {
+            background: var(--primary);
+        }
+
+        .lightbox-prev {
+            left: -70px;
+        }
+
+        .lightbox-next {
+            right: -70px;
+        }
+
+        .lightbox-caption {
+            text-align: center;
+            color: white;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(180deg, var(--background-light) 0%, var(--background) 100%);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-icon.phone {
+            background: rgba(34, 197, 94, 0.15);
+            color: #22c55e;
+        }
+
+        .contact-icon.email {
+            background: rgba(59, 130, 246, 0.15);
+            color: #3b82f6;
+        }
+
+        .contact-card h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
         .social-btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            padding: 18px;
+            gap: 0.75rem;
+            padding: 1.25rem;
             border-radius: 16px;
-            font-size: 13px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            color: white;
             text-decoration: none;
-            border: 1px solid rgba(255,255,255,0.05);
+            color: white;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-        .btn-wa { background: #128C7E; }
-        .btn-ig { background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); }
-        .btn-fb { background: #0866FF; }
-        .btn-mail { background: #f8fafc; color: #0f172a; }
-        .social-btn:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.5); border-color: rgba(168, 85, 247, 0.4); }
 
-        /* Enhanced Google Panel */
-        .review-card {
-            background: linear-gradient(160deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 40px;
-            padding: 60px 40px;
+        .social-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .social-btn:hover::before {
+            left: 100%;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-btn.whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+        }
+
+        .social-btn.instagram {
+            background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+
+        .social-btn.facebook {
+            background: linear-gradient(135deg, #1877f2, #0d65d9);
+        }
+
+        .social-btn.youtube {
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+        }
+
+        .share-section {
             text-align: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
         }
-        .star-pulse { animation: starGlow 2s infinite alternate; color: #fbbf24; }
-        @keyframes starGlow { from { filter: drop-shadow(0 0 2px #fbbf24); } to { filter: drop-shadow(0 0 10px #f59e0b); } }
 
-        /* Image Cards */
-        .img-card { border-radius: 20px; overflow: hidden; background: #111; border: 1px solid rgba(255,255,255,0.05); transition: 0.5s; }
-        .img-card:hover { border-color: #a855f7; transform: scale(1.02); }
+        .share-section h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+        }
+
+        .share-btns {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .share-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .share-btn:hover {
+            border-color: var(--primary);
+            background: rgba(124, 58, 237, 0.1);
+            color: var(--primary-light);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--background);
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo .logo-icon {
+            width: 40px;
+            height: 40px;
+        }
+
+        .footer-logo .logo-text {
+            font-size: 1.1rem;
+        }
+
+        .footer-text {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-light);
+        }
+
+        .footer-copy {
+            color: var(--text-dim);
+            font-size: 0.8rem;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--surface);
+            border: 1px solid var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            color: var(--text);
+            font-size: 0.9rem;
+            z-index: 3000;
+            opacity: 0;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .toast i {
+            color: var(--primary-light);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .reels-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .reviews-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .reviews-stats {
+                max-width: 350px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-image-wrapper {
+                max-width: 350px;
+                margin: 0 auto;
+            }
+
+            .about-badge {
+                top: -10px;
+                right: -10px;
+                padding: 0.75rem 1rem;
+                font-size: 0.75rem;
+            }
+
+            .reels-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .lightbox-nav {
+                display: none;
+            }
+
+            .section {
+                padding: 4rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+
+            .gallery-tabs {
+                flex-wrap: wrap;
+            }
+
+            .share-btns {
+                flex-wrap: wrap;
+            }
+        }
     </style>
 </head>
-
 <body>
-
-    <nav class="fixed top-0 w-full z-[100] py-5">
-        <div class="flex justify-center gap-1 md:gap-10">
-            <a href="#about" class="nav-link">About</a>
-            <a href="#performances" class="nav-link">Reels</a>
-            <a href="#persona-gallery" class="nav-link">Persona</a>
-            <a href="#public-gallery" class="nav-link">Gallery</a>
-            <a href="#contact" class="nav-link">Contact</a>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-hat-wizard"></i>
+                </div>
+                <div class="logo-text">GS<span>.</span>Magic</div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#reels">Reels</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
 
-    <section class="hero-container">
-        <img src="images/background.png" class="bg-animate">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-[#050508]"></div>
-        <div class="relative z-10 text-center px-6">
-            <h1 class="text-5xl md:text-9xl font-bold tracking-tighter text-white uppercase leading-none">Gouri Shankar Das</h1>
-            <div class="h-[1px] w-24 bg-purple-600 mx-auto my-8 opacity-50"></div>
-            <p class="text-gray-400 tracking-[0.4em] uppercase text-[10px] md:text-lg font-light">Hypno-Mentalist • Illusionist</p>
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" id="mobileNavClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#reels">Reels</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <img src="images/background.png" alt="Stage Background">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-glow hero-glow-1"></div>
+        <div class="hero-glow hero-glow-2"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="dot"></span>
+                <span>Available for Bookings</span>
+            </div>
+            <h1>Gouri Shankar Das</h1>
+            <p class="hero-subtitle">Hypno-Mentalist & Illusionist</p>
+            <p class="hero-tagline">Experience the impossible. Where psychology meets illusion, and reality bends to the power of the mind.</p>
+            <div class="hero-cta">
+                <a href="https://wa.me/918011939996" class="btn btn-primary" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    Book Now
+                </a>
+                <a href="#about" class="btn btn-outline">
+                    <i class="fas fa-play"></i>
+                    Discover More
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
         </div>
     </section>
 
-    <section id="about" class="py-32 px-6 max-w-6xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-            <div class="relative group">
-                <div class="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-                <img src="images/profile.png" class="relative w-full rounded-3xl shadow-2xl transition duration-700">
-            </div>
-            <div class="space-y-8">
-                <h2 class="text-4xl font-bold text-white uppercase tracking-tight">Master of the <span class="text-purple-500">Subconscious</span></h2>
-                <div class="space-y-4 text-gray-400 text-lg leading-relaxed font-light">
-                    <p>
-                        Gouri Shankar Das is not just a performer; he is a psychological architect who bridges the gap between reality and the impossible. With over <strong>12 years of professional expertise</strong>, he has mastered the rare art of Hypno-Mentalism, blending deep psychological insight with world-class illusion.
-                    </p>
-                    <p>
-                        His stage presence is magnetic, guiding audiences through immersive journeys where thoughts are read, decisions are influenced, and the subconscious mind takes center stage. From elite corporate events to grand public theaters, Gouri Shankar has captivated thousands, leaving a trail of wonder and intellectual curiosity.
-                    </p>
-                    <p>
-                        Specializing in suggestion, telepathy, and high-level psychological influence, he continues to push the boundaries of what is possible, proving that the mind is the greatest stage of all.
-                    </p>
-                </div>
-                <div class="grid grid-cols-2 gap-4 pt-4">
-                    <div class="p-6 bg-white/[0.03] border border-white/5 rounded-2xl">
-                        <span class="block text-3xl font-bold text-white">1000+</span>
-                        <span class="text-[10px] uppercase tracking-widest text-purple-500">Live Shows</span>
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="section-container">
+            <div class="about-grid">
+                <div class="about-image-wrapper">
+                    <div class="about-image">
+                        <img src="images/profile.png" alt="Gouri Shankar Das">
                     </div>
-                    <div class="p-6 bg-white/[0.03] border border-white/5 rounded-2xl">
-                        <span class="block text-3xl font-bold text-white">12+</span>
-                        <span class="text-[10px] uppercase tracking-widest text-purple-500">Years Exp.</span>
+                    <div class="about-badge">
+                        <i class="fas fa-star"></i>
+                        <span>5-Star Verified Artist</span>
                     </div>
+                    <div class="about-frame"></div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="performances" class="py-32 px-4 bg-white/[0.01] border-y border-white/[0.02]">
-        <h2 class="text-center text-3xl font-bold mb-20 uppercase tracking-[0.4em] text-white/90">Performance Reels</h2>
-        <div id="video-grid">
-            </div>
-    </section>
-
-    <section class="py-32 px-6 max-w-5xl mx-auto">
-        <div class="review-card">
-            <div class="flex flex-col items-center mb-12">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" class="w-16 h-16 mb-6">
-                <h3 class="text-white text-2xl font-bold uppercase tracking-widest mb-2">Google Business Rating</h3>
-                <div class="flex items-center gap-6">
-                    <span class="text-8xl font-black text-white">5.0</span>
-                    <div class="text-left">
-                        <div class="flex star-pulse mb-1">
-                            <i data-lucide="star" fill="currentColor"></i>
-                            <i data-lucide="star" fill="currentColor"></i>
-                            <i data-lucide="star" fill="currentColor"></i>
-                            <i data-lucide="star" fill="currentColor"></i>
-                            <i data-lucide="star" fill="currentColor"></i>
+                <div class="about-content">
+                    <h2>The Mind Behind <span>The Magic</span></h2>
+                    <div class="about-tags">
+                        <span class="about-tag">Mind Reading</span>
+                        <span class="about-tag">Hypnosis</span>
+                        <span class="about-tag">Psychological Influence</span>
+                        <span class="about-tag">Stage Illusion</span>
+                    </div>
+                    <div class="about-text">
+                        <p><strong>Gouri Shankar Das</strong> is not just a performer; he is a psychological architect who bridges the gap between reality and the impossible. With over <span style="color: var(--primary-light); font-weight: 600;">12 years of professional expertise</span>, he has mastered the rare art of Hypno-Mentalism, blending deep psychological insight with world-class illusion.</p>
+                        <br>
+                        <p>His stage presence is magnetic, guiding audiences through immersive journeys where thoughts are read, decisions are influenced, and the subconscious mind takes center stage. From elite corporate events to grand public theaters, Gouri Shankar has captivated thousands, leaving a trail of wonder and intellectual curiosity.</p>
+                        <br>
+                        <p>Specializing in suggestion, telepathy, and high-level psychological influence, he continues to push the boundaries of what is possible, proving that <em>the mind is the greatest stage of all</em>.</p>
+                    </div>
+                    <div class="about-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-value">1000+</div>
+                            <div class="stat-label">Live Shows</div>
                         </div>
-                        <p class="text-purple-500 font-bold text-sm uppercase tracking-widest">Verified 5-Star Artist</p>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div class="stat-value">12+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
                     </div>
                 </div>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-                <div class="bg-black/40 p-8 rounded-3xl border border-white/5 text-left">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center font-bold">R</div>
-                        <span class="text-sm font-bold text-white">Rahul K.</span>
-                    </div>
-                    <p class="text-gray-400 italic text-sm">"Absolutely unbelievable. Gouri Shankar doesn't just perform magic; he reads your very thoughts. The best mentalist in the business!"</p>
-                </div>
-                <div class="bg-black/40 p-8 rounded-3xl border border-white/5 text-left">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center font-bold">A</div>
-                        <span class="text-sm font-bold text-white">Ananya S.</span>
-                    </div>
-                    <p class="text-gray-400 italic text-sm">"I was a skeptic, but his hypnosis is real. A mind-bending experience that I will never forget. Highly recommended for any event."</p>
-                </div>
-            </div>
+        </div>
+    </section>
 
-            <div class="flex flex-col md:flex-row justify-center gap-6">
-                <a href="https://share.google/9cq7KQ6kqxWBdp9OB" target="_blank" class="px-12 py-5 bg-white text-black font-black rounded-full hover:bg-purple-600 hover:text-white transition duration-500 flex items-center justify-center gap-3">
-                    <i data-lucide="edit-3" class="w-5 h-5"></i> WRITE A REVIEW
-                </a>
-                <a href="https://share.google/9cq7KQ6kqxWBdp9OB" target="_blank" class="px-12 py-5 border border-white/20 text-white font-bold rounded-full hover:bg-white/10 transition duration-500">
-                    VIEW ALL REVIEWS
+    <!-- Reels Section -->
+    <section class="section reels" id="reels">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">
+                    <i class="fab fa-instagram"></i>
+                    <span>Featured Reels</span>
+                </div>
+                <h2 class="section-title">Watch The <span>Magic</span> Unfold</h2>
+                <p class="section-desc">Glimpses of mind-bending performances that leave audiences speechless</p>
+            </div>
+            <div class="reels-grid" id="reelsGrid">
+                <!-- Reels will be loaded dynamically -->
+            </div>
+            <div class="reels-cta">
+                <a href="https://www.instagram.com/gshankar.magic" class="btn btn-outline" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                    View All on Instagram
                 </a>
             </div>
         </div>
     </section>
 
-    <section id="persona-gallery" class="py-32 px-4 max-w-7xl mx-auto">
-        <h2 class="text-center text-3xl font-bold mb-20 uppercase tracking-[0.4em]">The Persona</h2>
-        <div id="persona-grid" class="grid grid-cols-2 md:grid-cols-4 gap-8"></div>
-    </section>
-
-    <section id="public-gallery" class="py-32 px-4 max-w-7xl mx-auto">
-        <h2 class="text-center text-3xl font-bold mb-20 uppercase tracking-[0.4em]">The Stage</h2>
-        <div id="public-grid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4"></div>
-    </section>
-
-    <footer id="contact" class="py-32 bg-[#030305] border-t border-white/5 px-6">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-5xl font-bold mb-4 uppercase tracking-tighter text-white">Let's Connect</h2>
-            <p class="text-gray-600 mb-16 uppercase text-xs tracking-[0.5em]">For Global Bookings & Collaborations</p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-20 max-w-2xl mx-auto">
-                <a href="https://wa.me/918011939996" target="_blank" class="social-btn btn-wa">
-                    <i data-lucide="message-circle"></i> WhatsApp
-                </a>
-                <a href="https://www.instagram.com/gshankar.magic" target="_blank" class="social-btn btn-ig">
-                    <i data-lucide="instagram"></i> Instagram
-                </a>
-                <a href="https://www.facebook.com/share/18MFJPQQzu/" target="_blank" class="social-btn btn-fb">
-                    <i data-lucide="facebook"></i> Facebook
-                </a>
-                <a href="mailto:mentalistshankar22@gmail.com" class="social-btn btn-mail">
-                    <i data-lucide="mail"></i> Email
-                </a>
+    <!-- Reviews Section -->
+    <section class="section reviews" id="reviews">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">
+                    <i class="fab fa-google"></i>
+                    <span>Google Reviews</span>
+                </div>
+                <h2 class="section-title">What People <span>Say</span></h2>
             </div>
-
-            <div class="bg-white/[0.02] inline-flex items-center gap-6 px-8 py-4 rounded-full border border-white/5">
-                <span class="text-[10px] uppercase tracking-widest text-gray-500">Share Site</span>
-                <button onclick="navigator.share({title: 'Gouri Shankar Das', url: window.location.href})" class="text-white hover:text-purple-500 transition">
-                    <i data-lucide="share-2" class="w-5 h-5"></i>
-                </button>
-                <button onclick="navigator.clipboard.writeText(window.location.href); alert('Link Copied!')" class="text-white hover:text-purple-500 transition">
-                    <i data-lucide="copy" class="w-5 h-5"></i>
-                </button>
+            <div class="reviews-wrapper">
+                <div class="reviews-stats">
+                    <div class="reviews-rating">5.0</div>
+                    <div class="reviews-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="reviews-label">Based on Google Reviews</div>
+                    <div class="reviews-logo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google">
+                        <span>Reviews</span>
+                    </div>
+                    <a href="https://g.co/kgs/wyP3U5a" class="btn btn-primary btn-review" target="_blank">
+                        <i class="fas fa-edit"></i>
+                        Write a Review
+                    </a>
+                </div>
+                <div class="reviews-carousel">
+                    <div class="reviews-track" id="reviewsTrack">
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="review-avatar purple">R</div>
+                                <div class="review-info">
+                                    <h4>Rahul K.</h4>
+                                    <div class="review-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="review-text">"Absolutely unbelievable. Gouri Shankar doesn't just perform magic; he reads your very thoughts. The best mentalist in the business!"</p>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="review-avatar blue">A</div>
+                                <div class="review-info">
+                                    <h4>Ananya S.</h4>
+                                    <div class="review-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="review-text">"I was a skeptic, but his hypnosis is real. A mind-bending experience that I will never forget. Highly recommended for any event."</p>
+                        </div>
+                    </div>
+                    <div class="reviews-nav">
+                        <button id="reviewPrev"><i class="fas fa-chevron-left"></i></button>
+                        <button id="reviewNext"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
             </div>
-            
-            <p class="text-gray-800 text-[10px] tracking-[1em] mt-32 uppercase">© 2026 GOURI SHANKAR DAS • MENTALIST</p>
         </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section gallery" id="gallery">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">
+                    <i class="fas fa-images"></i>
+                    <span>Photo Gallery</span>
+                </div>
+                <h2 class="section-title">Capturing <span>Moments</span></h2>
+                <p class="section-desc">A visual journey through performances and memorable events</p>
+            </div>
+            <div class="gallery-tabs">
+                <button class="gallery-tab active" data-tab="persona">Persona</button>
+                <button class="gallery-tab" data-tab="public">Public Appearances</button>
+            </div>
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Gallery items will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-label">
+                    <i class="fas fa-envelope"></i>
+                    <span>Get In Touch</span>
+                </div>
+                <h2 class="section-title">Let's Create <span>Magic</span> Together</h2>
+                <p class="section-desc">Book an unforgettable experience for your next event</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon phone">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>+91 801 193 9996</h3>
+                    <p>Available for calls & WhatsApp</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon email">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>gourishankarmagic@gmail.com</h3>
+                    <p>Send us an email anytime</p>
+                </div>
+            </div>
+            <div class="social-grid">
+                <a href="https://wa.me/918011939996" class="social-btn whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp
+                </a>
+                <a href="https://www.instagram.com/gshankar.magic" class="social-btn instagram" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                    Instagram
+                </a>
+                <a href="https://www.facebook.com/share/1A9KDTK7wC/" class="social-btn facebook" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                    Facebook
+                </a>
+                <a href="https://youtube.com/@gshankarmagic" class="social-btn youtube" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                    YouTube
+                </a>
+            </div>
+            <div class="share-section">
+                <h3>Share This Page</h3>
+                <div class="share-btns">
+                    <button class="share-btn" id="shareWhatsApp" title="Share on WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </button>
+                    <button class="share-btn" id="shareFacebook" title="Share on Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </button>
+                    <button class="share-btn" id="shareTwitter" title="Share on Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </button>
+                    <button class="share-btn" id="shareLinkedIn" title="Share on LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </button>
+                    <button class="share-btn" id="shareCopy" title="Copy Link">
+                        <i class="fas fa-link"></i>
+                    </button>
+                    <button class="share-btn" id="shareNative" title="More Options">
+                        <i class="fas fa-share-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-logo">
+            <div class="logo-icon">
+                <i class="fas fa-hat-wizard"></i>
+            </div>
+            <div class="logo-text">GS<span>.</span>Magic</div>
+        </div>
+        <p class="footer-text">Experience the extraordinary world of mind and illusion</p>
+        <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <p class="footer-copy">&copy; 2025 Gouri Shankar Das. All rights reserved.</p>
     </footer>
 
-    <div id="image-modal" class="hidden fixed inset-0 z-[1000] flex items-center justify-center p-4" onclick="this.classList.add('hidden')">
-        <div class="absolute inset-0 bg-black/98 backdrop-blur-xl"></div>
-        <img id="modal-img" src="" class="relative max-h-[85vh] max-w-full rounded-2xl shadow-2xl border border-white/10 scale-95 transition-transform duration-300">
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="lightbox-content">
+            <button class="lightbox-nav lightbox-prev" id="lightboxPrev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <img src="" alt="" id="lightboxImg">
+            <button class="lightbox-nav lightbox-next" id="lightboxNext">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        <p class="lightbox-caption" id="lightboxCaption"></p>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Link copied to clipboard!</span>
     </div>
 
     <script src="script.js"></script>
-    <script async defer src="https://www.instagram.com/embed.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            if (window.lucide) lucide.createIcons();
-        });
-    </script>
 </body>
 </html>
