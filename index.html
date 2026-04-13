@@ -833,6 +833,48 @@
             box-shadow: 0 6px 25px rgba(225, 48, 108, 0.5);
         }
 
+        /* Fallback state for reels */
+        .reel-fallback {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            cursor: pointer;
+        }
+
+        .reel-fallback-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .reel-fallback-content i {
+            font-size: 3rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .reel-fallback-content span {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        /* Improve iframe embed appearance */
+        .reel-thumbnail iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 12px;
+            z-index: 2;
+        }
+
         .reels-cta {
             text-align: center;
             margin-top: 2rem;
